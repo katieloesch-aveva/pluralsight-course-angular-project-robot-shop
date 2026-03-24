@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'bot-home',
   imports: [],
-  templateUrl: './home.html',
-  styleUrl: './home.css',
+  template: '<p class="red">Inline Home</p>',
+  styles: [`.red {
+    color: darkred;
+    }`],
 })
 export class Home {}
