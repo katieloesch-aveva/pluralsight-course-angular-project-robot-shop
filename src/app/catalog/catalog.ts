@@ -187,6 +187,10 @@ export class Catalog {
   }
 
   getImgUrl(product: IProduct) {
+    if (!product) {
+      return '';
+    }
+
     return '/assets/images/robot-parts/' + product.imageName;
   }
 
