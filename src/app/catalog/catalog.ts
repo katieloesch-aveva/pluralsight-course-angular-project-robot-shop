@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IProduct } from './product.model';
-import { NgFor } from "@angular/common";
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'bot-catalog',
@@ -10,6 +10,7 @@ import { NgFor } from "@angular/common";
 })
 export class Catalog {
   products: IProduct[];
+  filter: string = '';
 
   constructor() {
     this.products = [
@@ -187,5 +188,11 @@ export class Catalog {
 
   getImgUrl(product: IProduct) {
     return '/assets/images/robot-parts/' + product.imageName;
+  }
+
+  getFilteredProducts() {
+    return this.filter == ''
+      ? this.products
+      : this.products.filter((product) => product.category === this.filter);
   }
 }
