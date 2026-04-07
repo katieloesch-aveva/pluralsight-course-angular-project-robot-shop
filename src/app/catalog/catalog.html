@@ -8,7 +8,8 @@
   </div>
 
   <ul class="products">
-    <li class="product-item">
+
+    <li class="product-item" *ngFor="let product of products">
       <div class="product">
         <div class="product-details">
           <img [src]="getImgUrl(product)" [alt]="product.name" />
@@ -24,5 +25,6 @@
         </div>
       </div>
     </li>
+
   </ul>
 </div>
