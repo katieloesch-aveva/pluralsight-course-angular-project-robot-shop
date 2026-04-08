@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IProduct } from './product.model';
-import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { CurrencyPipe, NgFor, NgIf, NgClass } from '@angular/common';
 
 @Component({
   selector: 'bot-catalog',
-  imports: [NgFor, NgIf, CurrencyPipe],
+  imports: [NgFor, NgIf, CurrencyPipe, NgClass],
   templateUrl: './catalog.html',
   styleUrl: './catalog.css',
 })
@@ -198,5 +198,10 @@ export class Catalog {
     return this.filter == ''
       ? this.products
       : this.products.filter((product) => product.category === this.filter);
+  }
+
+  getDiscountClasses(product: IProduct) {
+    if (product.discount > 0) return ['strikethrough'];
+    else return [];
   }
 }
