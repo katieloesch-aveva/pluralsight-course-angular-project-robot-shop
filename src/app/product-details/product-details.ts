@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CurrencyPipe, NgIf, NgClass } from '@angular/common';
 import { IProduct } from '../catalog/product.model';
 
@@ -10,6 +10,12 @@ import { IProduct } from '../catalog/product.model';
 })
 export class ProductDetails {
   @Input() product!: IProduct;
+  @Output() buy = new EventEmitter();
+
+  buyBtnClicked(product: IProduct) {
+    console.log(`product ${product.name} added to cart`);
+    this.buy.emit()
+  }
 
   getImgUrl(product: IProduct) {
     if (!product) {
@@ -17,10 +23,6 @@ export class ProductDetails {
     }
 
     return '/assets/images/robot-parts/' + product.imageName;
-  }
-
-  addToCart(product: IProduct) {
-    console.log(`product ${product.name} added to cart`);
   }
 
   getDiscountClasses(product: IProduct) {
